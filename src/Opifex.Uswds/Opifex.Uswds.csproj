@@ -1,0 +1,64 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="\"/>
+    <None Include="../../logo.png" Pack="true" PackagePath="\"/>
+    <None Include="../../LICENSE" Pack="true" PackagePath=""/>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <PackageId>Opifex.Uswds</PackageId>
+    <Version>3.1.0</Version>
+    <PackageTags>RCL;USWDS;Blazor</PackageTags>
+    <Authors>pkothare</Authors>
+    <Company>Opifex</Company>
+    <Copyright>© Pranav Kothare. All rights reserved.</Copyright>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/pkothare/opifex-uswds</RepositoryUrl>
+    <Description>
+      An RCL package that provides a quick and easy way to include references to the USWDS static assets in your Razor/Blazor projects.
+      For more information see - https://github.com/pkothare/opifex-uswds
+    </Description>
+    <UnpackDir>wwwroot</UnpackDir>
+    <UswdsPackageUrl>https://github.com/uswds/uswds/releases/download/v$(Version)/uswds-uswds-$(Version).tgz</UswdsPackageUrl>
+  </PropertyGroup>
+
+  <!--
+    We want to run this before at the beginning of a `dotnet restore` command.
+  -->
+  <Target Name="DownloadAndUnpack" BeforeTargets="Restore">
+    <!-- Download the file from GitHub -->
+    <DownloadFile SourceUrl="$(UswdsPackageUrl)" DestinationFolder="$(IntermediateOutputPath)" SkipUnchangedFiles="true">
+      <Output TaskParameter="DownloadedFile" ItemName="PackageContent" />
+    </DownloadFile>
+    <!-- 
+      Make the wwwroot directory so that the USWDS assets can be placed in there.
+      See https://docs.microsoft.com/en-us/aspnet/core/blazor/components/class-libraries?view=aspnetcore-6.0&tabs=visual-studio-code#create-an-rcl-with-static-assets-in-the-wwwroot-folder
+    -->
+    <MakeDir Directories="$(MSBuildProjectDirectory)\$(UnpackDir)" />
+    <!-- 
+      Unpack the downloaded package into the wwwroot folder
+      Archiver tool reference: https://www.gnu.org/software/tar/manual/tar.html 
+    -->
+    <Exec Command="tar -xzf @(PackageContent) --directory=$(MSBuildProjectDirectory)\$(UnpackDir) package/dist --strip-components=2"
+      ContinueOnError="false" />
+  </Target>
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.6" />
+  </ItemGroup>
+
+</Project>
