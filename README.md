@@ -36,7 +36,7 @@ The versioning for this library follows the **major and minor** [release version
 
     This is a consequence of how static assets are packaged in an RCL. To read more about this, see [Consume content from a referenced RCL](https://docs.microsoft.com/en-us/aspnet/core/razor-pages/ui-class?view=aspnetcore-6.0&tabs=visual-studio#consume-content-from-a-referenced-rcl).
 
-For a more in-depth understanding of how to integrate it with a Blazor Client project, see the [landing page sample project](/samples/LandingPageSample/), which was adapted from the [landing page template](https://designsystem.digital.gov/templates/landing-page/).
+For a more in-depth understanding of how to integrate it with a Blazor Client project, see the [landing page sample project](https://github.com/pkothare/opifex-uswds/tree/main/samples/LandingPageSample), which was adapted from the [landing page template](https://designsystem.digital.gov/templates/landing-page/).
 
 ### Contributing
 Please follow GitHub community guidelines and contribute by opening issues or pull requests accordingly. 
