@@ -4,6 +4,9 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <RestoreAdditionalProjectSources>
+      ..\..\src\Opifex.Uswds\bin\Debug
+    </RestoreAdditionalProjectSources>
   </PropertyGroup>
 
   <ItemGroup>
