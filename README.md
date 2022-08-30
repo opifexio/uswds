@@ -15,7 +15,7 @@ The versioning for this library follows the **major and minor** [release version
 
     Instead of using the path `assets/uswds/dist/` as specified in the documentation, you will be using the path `_content/Opifex.Uswds/` to retrieve the various resources.
 
-    So the a minimal `index.html` file would look like:
+    So a minimal `index.html` file would look like:
 
     ```html
     <!DOCTYPE html>
