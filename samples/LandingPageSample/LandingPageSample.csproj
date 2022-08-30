@@ -9,10 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.6" PrivateAssets="all" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Opifex.Uswds\Opifex.Uswds.csproj" />
+    <PackageReference Include="Opifex.Uswds" Version="3.1.0" />
   </ItemGroup>
 
 </Project>
